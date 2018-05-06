@@ -1,0 +1,13 @@
+{
+  "short_name": "React App",
+  "name": "React Extension",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_title": "React Ext",
+    "permissions": ["activeTab", "<all_urls>"]
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "version": "1.0"
+}
