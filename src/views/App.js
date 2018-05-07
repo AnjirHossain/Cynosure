@@ -22,14 +22,15 @@ class App extends Component {
     let taskListContent = <div>
       <h1>Tasklist</h1>
     </div>;
-    let appContentContainer = <FlexItem>
+    let appContentContainer = <FlexItem flex alignCenter justifyCenter>
       {/*
               - add task
               - task list
               - motivation header
             */}
       {addTaskContent}
-      {taskListContent}
+
+      {/* {taskListContent} */}
     </FlexItem>
 
     return <Flex center inline>
@@ -39,9 +40,9 @@ class App extends Component {
           */}
         {appContentContainer}
 
-        <FlexItem>
+        {/* <FlexItem>
           {settingsContent}
-        </FlexItem>
+        </FlexItem> */}
       </Flex>;
   }
 }
