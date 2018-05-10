@@ -1,8 +1,10 @@
 import tasks from './tasks'
-import addTasksCM from "./addTasksCM";
+import uisTaskFormContainer from "./uisTaskFormContainer";
+import uisTaskListContainer from "./uisTaskListContainer";
 
 export default {
   tasks,
-  addTasksCM
+  uisTaskFormContainer,
+  uisTaskListContainer
 };
 

@@ -1,0 +1,2 @@
+export const SET_SELECTED_LIST = "tasks/SET_SELECTED_LIST";
+export const EXPAND_TASK_DETAILS = "tasks/EXPAND_TASK_DETAILS";

@@ -17,11 +17,11 @@ const DeadlineSetter = ({
         Add a deadline
         <fieldset>
           <label>Time: </label>
-            <TimePicker size="large" use12Hours={true} onChange={onTimeChange} format="HH:mm" />
+          <TimePicker defaultValue={defaultTimeValue} size="large" use12Hours onChange={onTimeChange} format="hh:mm" />
         </fieldset>
         <fieldset>
-            <label>Date: </label>
-            <DatePicker size="large" onChange={onDateChange} format="MM/DD/YYYY" showToday={true} />
+          <label>Date: </label>
+          <DatePicker size="large" onChange={onDateChange} format="MM/DD/YYYY" showToday={true} />
         </fieldset>
       </div>;
 }

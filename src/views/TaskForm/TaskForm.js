@@ -27,18 +27,16 @@ const TaskForm = ({
             {/* Form textual data */}
             <fieldset>
               <InputText required={true} placeholder="Title" name="title" />
-              <InputText required={true} placeholder="What's the outcome of this task?..." name="outcome" />
+              <InputText placeholder="What's the outcome of this task?..." name="outcome" />
             </fieldset>
 
-            {/*
-            Reveals 'add details' section
-            - wrap the following in a div to animate
-            */}
+            {/* Reveals 'add details' adn 'add deadline' section */}
             <fieldset>
               {showAddDetails ? <TextArea placeholder="Add task details..." name="details" /> : null}
               {showDeadlineSetter ? <DeadlineSetter onDateChange={onDateChange} onTimeChange={onTimeChange} defaultDateValue={defaultDateValue} defaultTimeValue={defaultTimeValue} /> : null}
             </fieldset>
 
+            {/* Form ui state buttons */}
             <fieldset>
               <ButtonRegular title="Add task details" type="button" onClick={toggleAddDetails}>
                 <Icon type="exception" />
@@ -48,6 +46,7 @@ const TaskForm = ({
                 <Icon type="calendar" />
               </ButtonRegular>
               <ButtonPrimary type="submit">Save</ButtonPrimary>
+              <ButtonPrimary type="button" onClick={setFormContent.bind(null, "DEFAULT")}>Cancel</ButtonPrimary>
             </fieldset>
           </form>
         </div>;

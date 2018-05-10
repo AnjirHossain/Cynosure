@@ -5,8 +5,10 @@ import logo from './logo.svg';
 import axios from 'axios';
 import styled from 'styled-components';
 import Flex, { FlexItem } from "styled-flex-component";
+import {Grid, Col, Row} from 'react-styled-flexboxgrid'
 
 import TaskFormContainer from './TaskForm/TaskFormContainer';
+import TaskListConainer from './Tasklist/TaskListContainer'
 
 class App extends Component {
   constructor() {
@@ -17,33 +19,23 @@ class App extends Component {
     };
   }
   render() {
+    let gamificationContent = <div>
+      <h1>Gamification content</h1>
+    </div>
     let addTaskContent = <TaskFormContainer />;
     let settingsContent = <div>settings</div>;
-    let taskListContent = <div>
-      <h1>Tasklist</h1>
-    </div>;
-    let appContentContainer = <FlexItem flex alignCenter justifyCenter>
-      {/*
-              - add task
-              - task list
-              - motivation header
-            */}
-      {addTaskContent}
+    let taskListContent = <TaskListConainer />;
+    let appContentContainer = <div>
+        {gamificationContent}
+        {addTaskContent}
+        {taskListContent}
+      </div>;
 
-      {/* {taskListContent} */}
-    </FlexItem>
-
-    return <Flex center inline>
-        {/*
-            - app content container
-            - will change contingent upon user action
-          */}
+    return <div middle="xs">
+        {/* app content area */}
         {appContentContainer}
-
-        {/* <FlexItem>
-          {settingsContent}
-        </FlexItem> */}
-      </Flex>;
+        {/* app settings area */}
+      </div>;
   }
 }
 

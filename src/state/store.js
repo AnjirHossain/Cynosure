@@ -4,15 +4,15 @@ import initialState from './initialState'
 import thunk from "redux-thunk";
 
 const configureStore = initialState => {
-	console.log(reducers);
-
 	/**
 	 * uis - short for ui state, solely responsible for
 	 * ui state
 	 */
 	const rootReducer = combineReducers({
-		uisAddTaskContent: reducers.addTasksCM,
-		tasks: reducers.tasks
+		tasks: reducers.tasks,
+		/* All the following reducers manage ui state */
+		uisTaskFormContainer: reducers.uisTaskFormContainer,
+		uisTaskListContainer: reducers.uisTaskListContainer
 	});
 
 	const store = createStore(
