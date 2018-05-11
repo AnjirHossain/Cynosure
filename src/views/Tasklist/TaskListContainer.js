@@ -33,10 +33,10 @@ class TaskListContainer extends Component {
     };
     let taskListNavigatorProps = { setCurrentSelectedList: props.setCurrentSelectedList, currentSelectedListId: props.currentSelectedListId };
 
-    return <div>
-      <TaskListNavigator {...taskListNavigatorProps} />
-      <TaskList {...taskListProps} />
-    </div>;
+    return <section style={props.style}>
+        <TaskListNavigator {...taskListNavigatorProps} />
+        <TaskList {...taskListProps} />
+      </section>;
 	}
 }
 

@@ -12,7 +12,16 @@ export default {
         title: "B"
       }
     }),
-    completedTasks: Map(null)
+    completedTasks: Map({
+      c: {
+        id: 1,
+        title: "C"
+      },
+      d: {
+        id: 2,
+        title: "D"
+      }
+    })
   }),
   /*
     uis is prepended to all state objects

@@ -6,7 +6,7 @@ import React from 'react';
  * - currentSelectedListId
  */
 const TaskListNavigator = ({ setCurrentSelectedList, currentSelectedListId }) => {
-    return <div>
+    return <nav>
         <button
             onClick={setCurrentSelectedList.bind(null, "remainingTasks")}
         >
@@ -17,7 +17,7 @@ const TaskListNavigator = ({ setCurrentSelectedList, currentSelectedListId }) =>
         >
           Completed tasks (5)
         </button>
-      </div>;
+      </nav>;
 };
 
 export default TaskListNavigator;

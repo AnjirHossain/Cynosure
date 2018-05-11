@@ -16,54 +16,89 @@ const TaskForm = ({
   onDateChange,
   onTimeChange,
   defaultTimeValue,
-  defaultDateValue
+  defaultDateValue,
+  toggleTaskFormMode,
+  style
 }) => {
   let taskFormContent;
 
   switch (formMode) {
     case "TASK_FORM":
-      taskFormContent = <div>
+      taskFormContent = (
         <form id="addTaskForm" name="addTaskForm" onSubmit={onSubmit}>
-            {/* Form textual data */}
-            <fieldset>
-              <InputText required={true} placeholder="Title" name="title" />
-              <InputText placeholder="What's the outcome of this task?..." name="outcome" />
-            </fieldset>
+          {/* Form textual data */}
+          <fieldset>
+            <InputText required={true} placeholder="Title" name="title" />
+            <InputText
+              placeholder="What's the outcome of this task?..."
+              name="outcome"
+            />
+          </fieldset>
 
-            {/* Reveals 'add details' adn 'add deadline' section */}
-            <fieldset>
-              {showAddDetails ? <TextArea placeholder="Add task details..." name="details" /> : null}
-              {showDeadlineSetter ? <DeadlineSetter onDateChange={onDateChange} onTimeChange={onTimeChange} defaultDateValue={defaultDateValue} defaultTimeValue={defaultTimeValue} /> : null}
-            </fieldset>
+          {/* Reveals 'add details' adn 'add deadline' section */}
+          <fieldset>
+            {showAddDetails ? (
+              <TextArea placeholder="Add task details..." name="details" />
+            ) : null}
+            {showDeadlineSetter ? (
+              <DeadlineSetter
+                onDateChange={onDateChange}
+                onTimeChange={onTimeChange}
+                defaultDateValue={defaultDateValue}
+                defaultTimeValue={defaultTimeValue}
+              />
+            ) : null}
+          </fieldset>
 
-            {/* Form ui state buttons */}
-            <fieldset>
-              <ButtonRegular title="Add task details" type="button" onClick={toggleAddDetails}>
-                <Icon type="exception" />
-              </ButtonRegular>
-              {/* Opens a deadline setter */}
-              <ButtonRegular title="Set task deadline" type="button" onClick={toggleDeadlineSetter}>
-                <Icon type="calendar" />
-              </ButtonRegular>
-              <ButtonPrimary type="submit">Save</ButtonPrimary>
-              <ButtonPrimary type="button" onClick={setFormContent.bind(null, "DEFAULT")}>Cancel</ButtonPrimary>
-            </fieldset>
-          </form>
-        </div>;
+          {/* Form ui state buttons */}
+          <fieldset>
+            <ButtonRegular
+              title="Add task details"
+              type="button"
+              onClick={toggleAddDetails}
+            >
+              <Icon type="exception" />
+            </ButtonRegular>
+            {/* Opens a deadline setter */}
+            <ButtonRegular
+              title="Set task deadline"
+              type="button"
+              onClick={toggleDeadlineSetter}
+            >
+              <Icon type="calendar" />
+            </ButtonRegular>
+            <ButtonPrimary type="submit">Save</ButtonPrimary>
+            <ButtonPrimary
+              type="button"
+              onClick={(e) => {
+                toggleTaskFormMode();
+                setFormContent("DEFAULT")
+              }}
+            >
+              Cancel
+            </ButtonPrimary>
+          </fieldset>
+        </form>
+      );
       break;
 
     default:
       taskFormContent = (
-        <div>
-          <ButtonRegular onClick={setFormContent.bind(null, "TASK_FORM")}>
-            Add new task <Icon type="plus" />
-          </ButtonRegular>
-        </div>
+        <ButtonRegular
+          onClick={(e) => {
+            toggleTaskFormMode();
+            setFormContent("TASK_FORM");
+          }}
+        >
+          Add new task <Icon type="plus" />
+        </ButtonRegular>
       );
       break;
   }
 
-  return taskFormContent;
+  return <div style={style}>
+    {taskFormContent}
+  </div>;
 };
 
 export default TaskForm;

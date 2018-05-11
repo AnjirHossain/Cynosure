@@ -12,11 +12,15 @@ const TaskList = ({
 	expandTask
 }) => {
 	// use toJS and use vanilla objects if necessary
-	return <div>
+	return <section>
 		{!!tasks && tasks.size > 0 ? tasks.valueSeq().map((task) => {
-			return <li key={task.id}>{task.title}</li>;
+			return <article>
+				<li key={task.id}>
+					{task.title}
+				</li>
+			</article>;
         }) : <h1>Insert motivational content here</h1>}
-    </div>;
+    </section>;
 }
 
 export default TaskList;
