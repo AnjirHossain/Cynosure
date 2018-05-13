@@ -15,26 +15,26 @@ let appContentContainerDesktopStyles = {
   display: 'flex',
   flexFlow: 'column',
   flexBasis: '75vw',
-  backgroundColor: 'yellow',
-  overflow: 'hidden'
+  padding: '10em'
 };
 
 let taskFormContentStyle = {
   default: {
-    transition: ".25s all",
-    backgroundColor: "green",
+    transition: "height .3s ease",
     display: "flex",
-    height: "10%",
+    height: "10vh",
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#fff"
   },
   expanded: {
-    height: "100%",
+    height: "100vh",
+    zIndex: 200,
     justifyContent: "flex-start",
-    zIndex: 200
+    paddingTop: "25vh"
   },
   collapsed: {
-    height: "10%",
+    height: "10vh",
     zIndex: 100
   }
 };
@@ -42,8 +42,9 @@ let taskFormContentStyle = {
 let incouragementContentStyle = {
   default: {
     transition: ".25s all",
-    height: "25%",
-    zIndex: 100
+    height: "10em",
+    zIndex: 100,
+    fontFamily: 'Poppins, sans-serif'
   },
   /**
    * A state where this content will be taken out of view
@@ -57,15 +58,20 @@ let incouragementContentStyle = {
 
 let tasklistContentStyle = {
   defualt: {
-    transition: ".25s all",
+    transition: "height .3s ease",
     zIndex: 100
   },
+  /*
+    the state where some other component will
+    be dominating the view
+  */
   tucked: {
     height: "0",
-    zIndex: 0
+    zIndex: 0,
+    display: "none"
   },
   expanded: {
-    height: "100%",
+    height: "100vh",
     justifyContent: "flex-start",
     zIndex: 200
   }
@@ -96,10 +102,13 @@ class App extends Component {
      * - animate task form content
      */
     this.setState({
-      taskFormExpanded: !taskFormExpanded,
+      taskFormExpanded: !taskFormExpanded
+    });
+
+    this.setState({
       incouragementShown: !incouragementShown,
       tasklistShown: !tasklistShown
-    });
+    })
   }
 
   render() {
@@ -143,8 +152,7 @@ class App extends Component {
       <section
         style={{
           display: "flex",
-          flexBasis: "25vw",
-          backgroundColor: "lightblue"
+          flexBasis: "25vw"
         }}
       >
         {settingsContent}
@@ -160,9 +168,7 @@ class App extends Component {
           alignItems: "stretch",
           // made the wrapping container full width & height
           height: "100vh",
-          width: "100vw",
-          // overall padding
-          padding: "0 10em"
+          width: "100vw"
         }}
       >
         {/* app content section */}
